@@ -40,17 +40,16 @@ function login(username, password) {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Accept': 'application/json',
-            // 'Content-Type': 'application/json'
             "Content-Type": "application/json; charset=utf8"
         }
     }
 
     return fetch(`${config.apiUrl}/api/users/authenticate`, requestOptions)
-        // .then(handleResponse)
+        .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
-            // currentUserSubject.next(user);
+            currentUserSubject.next(user);
 
             return user;
         });
