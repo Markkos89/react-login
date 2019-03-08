@@ -15,8 +15,8 @@ class HomePage extends React.Component {
     componentDidMount() {
         const { currentUser } = this.state;
         console.log(currentUser)
-        // if(currentUser.length > 0)
-        if(!currentUser)
+        if(currentUser.length > 0)
+        // if(!currentUser)
             userService.getById(currentUser[0]._id).then(userFromApi => this.setState({ userFromApi }));
     }
 
