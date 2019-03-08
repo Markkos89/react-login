@@ -13,26 +13,12 @@ export const authenticationService = {
 };
 
 function login(username, password) {
-    // const requestOptions = {
-    //     method: 'POST',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'text/plain'
-    //     },
-    //     mode: 'no-cors',
-    //     dataType: 'json',
-    //     body: {
-    //         username: username,
-    //         password: password
-    //     }
-    // };
     console.log("username: " + username);
     console.log(typeof username)
     console.log("password: " + password)
     console.log(typeof password)
     const requestOptions = {
         method: 'POST',
-        // mode: 'no-cors',
         body: JSON.stringify({
             'username': username,
             'password': password
@@ -47,9 +33,15 @@ function login(username, password) {
     return fetch(`${config.apiUrl}/api/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            currentUserSubject.next(user);
+            // store user details and jwt token in local storage to keep user logged in between page refreshesç
+            if (!user) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                currentUserSubject.next(user);
+            } else {
+                localStorage.removeItem('currentUser');
+                currentUserSubject.next(null);
+            }
+
 
             return user;
         });
