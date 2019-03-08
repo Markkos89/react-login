@@ -33,7 +33,7 @@ function login(username, password) {
             console.log("authentication service user obj")
             console.log(user)
             console.log(!user)
-            if (user) {
+            if (user.length > 0) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 currentUserSubject.next(user);
             } else {
