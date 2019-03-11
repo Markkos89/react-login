@@ -9,7 +9,7 @@
     "scripts": {
         "build": "webpack-dev-server --open",
         "start": "npm run build && pm2 start ./src/server/index.js --name 'api'",
-        "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+        "client": "webpack-dev-server --mode development --devtool inline-source-map --hot --open",
         "server": "nodemon ./src/server/index.js",
         "dev": "concurrently \"npm run server\" \"npm run client\""
     },

@@ -23,7 +23,7 @@ fastify.register(require('fastify-cors'), {
 const compression = require('compression');
 
 // Connect to DB
-mongoose.connect('mongodb://localhost:27017/mycargarage', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/movies', { useNewUrlParser: true })
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err))
 

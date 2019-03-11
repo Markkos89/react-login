@@ -14,9 +14,8 @@ class HomePage extends React.Component {
 
     componentDidMount() {
         const { currentUser } = this.state;
-        console.log(currentUser)
-        if(currentUser.length > 0)
-        // if(!currentUser)
+
+        if(currentUser.length > 0) // if(!currentUser)
             userService.getById(currentUser[0]._id).then(userFromApi => this.setState({ userFromApi }));
     }
 
@@ -26,7 +25,7 @@ class HomePage extends React.Component {
             <div>
                 <h1>Home</h1>
                 <p>You're logged in with React & JWT!!</p>
-                <p>Your role is: <strong>{currentUser.role}</strong>.</p>
+                <p>Your role is: <strong>{currentUser[0].role.role}</strong>.</p>
                 <p>This page can be accessed by all authenticated users.</p>
                 <div>
                     Current user from secure api end point:

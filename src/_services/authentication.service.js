@@ -29,10 +29,7 @@ function login(username, password) {
     return fetch(`${config.apiUrl}/api/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            console.log("authentication service user obj")
-            console.log(user)
-            console.log(!user)
+            // store user details in local storage to keep user logged in between page refreshes
             if (user.length > 0) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 currentUserSubject.next(user);

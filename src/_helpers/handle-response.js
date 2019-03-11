@@ -14,6 +14,8 @@ export function handleResponse(response) {
             return Promise.reject(error);
         }
 
+        console.log("dataaaaaaaaaa")
+        console.log(data)
         return data;
     });
 }
