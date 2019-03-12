@@ -25,8 +25,8 @@ class UsersPage extends React.Component {
                     All users from secure (admin only) api end point:
                     {users &&
                         <ul>
-                            {users.map(user =>
-                                <li key={user.id}>{user.firstName} {user.lastName}</li>
+                            {users.map((user, index) =>
+                                <li key={user.id || index}>{user.firstName} {user.lastName}</li>
                             )}
                         </ul>
                     }
