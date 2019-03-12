@@ -1,6 +1,8 @@
 import React from 'react';
 
+import { history } from '@/_helpers';
 import { userService } from '@/_services';
+import CrudUser from './CrudUser';
 
 class UsersPage extends React.Component {
     constructor(props) {
@@ -13,6 +15,18 @@ class UsersPage extends React.Component {
 
     componentDidMount() {
         userService.getAll().then(users => this.setState({ users }));
+    }
+
+    handleAddUser() {
+        history.push('/user/add');
+    }
+
+    handleEditUser() {
+        history.push('/user/edit');
+    }
+
+    handleDeleteUser() {
+        history.push('/user/delete');
     }
 
     render() {
@@ -31,6 +45,11 @@ class UsersPage extends React.Component {
                         </ul>
                     }
                 </div>
+                <CrudUser
+                    onAddUserClick={this.handleAddUser}
+                    onEditUserClick={this.handleEditUser}
+                    onDeleteUserClick={this.handleDeleteUser}
+                ></CrudUser>
             </div>
         );
     }

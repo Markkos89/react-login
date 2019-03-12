@@ -8,6 +8,9 @@ import { HomePage } from '@/HomePage';
 import { AdminPage } from '@/AdminPage';
 import { LoginPage } from '@/LoginPage';
 import { UsersPage } from '@/UsersPage';
+import AddUser from './../UsersPage/AddUser';
+import EditUser from './../UsersPage/EditUser';
+import DeleteUser from './../UsersPage/DeleteUser';
 
 class App extends React.Component {
     constructor(props) {
@@ -53,6 +56,9 @@ class App extends React.Component {
                                     <PrivateRoute exact path="/" component={HomePage} />
                                     <PrivateRoute path="/admin" roles={[Role.getAll().Admin]} component={AdminPage} />
                                     <PrivateRoute path="/users" roles={[Role.getAll().Admin]} component={UsersPage} />
+                                    <PrivateRoute path="/user/add" roles={[Role.getAll().Admin]} component={AddUser} />
+                                    <PrivateRoute path="/user/edit" roles={[Role.getAll().Admin]} component={EditUser} />
+                                    <PrivateRoute path="/user/delete" roles={[Role.getAll().Admin]} component={DeleteUser} />
                                     <Route path="/login" component={LoginPage} />
                                 </div>
                             </div>
