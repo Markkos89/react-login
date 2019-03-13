@@ -15,8 +15,8 @@ const swagger = require('./config/swagger')
 // Register Swagger
 fastify.register(require('fastify-swagger'), swagger.options)
 fastify.register(require('fastify-cors'), {
-    origin: '*',
-    allowedHeaders: ["Access-Control-Allow-Headers", "Origin", "X-Requested-With", "Content-Type", "Accept", "tokenid"]
+    origin: true,
+    // allowedHeaders: ["Access-Control-Allow-Headers", "Origin", "X-Requested-With", "Content-Type", "Accept", "tokenid"]
 });
 
 // Require Compression

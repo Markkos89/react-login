@@ -14,8 +14,7 @@ export function handleResponse(response) {
             return Promise.reject(error);
         }
 
-        console.log("dataaaaaaaaaa")
-        console.log(data)
+        console.log('handler-response: ', data);
         return data;
     });
 }

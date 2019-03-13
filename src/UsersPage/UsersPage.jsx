@@ -1,6 +1,8 @@
 import React from 'react';
 
+import { history } from '@/_helpers';
 import { userService } from '@/_services';
+import CrudUser from './CrudUser';
 
 class UsersPage extends React.Component {
     constructor(props) {
@@ -15,8 +17,21 @@ class UsersPage extends React.Component {
         userService.getAll().then(users => this.setState({ users }));
     }
 
+    handleAddUser() {
+        history.push('/addUser');
+    }
+
+    handleEditUser() {
+        history.push('/editUser');
+    }
+
+    handleDeleteUser() {
+        history.push('/deleteUser');
+    }
+
     render() {
         const { users } = this.state;
+
         return (
             <div>
                 <h1>Admin - users page</h1>
@@ -25,12 +40,17 @@ class UsersPage extends React.Component {
                     All users from secure (admin only) api end point:
                     {users &&
                         <ul>
-                            {users.map(user =>
-                                <li key={user.id}>{user.firstName} {user.lastName}</li>
+                            {users.map((user, index) =>
+                                <li key={user.id || index}>{user.firstName} {user.lastName}</li>
                             )}
                         </ul>
                     }
                 </div>
+                <CrudUser
+                    onAddUserClick={this.handleAddUser}
+                    onEditUserClick={this.handleEditUser}
+                    onDeleteUserClick={this.handleDeleteUser}
+                ></CrudUser>
             </div>
         );
     }
