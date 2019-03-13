@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { userService } from '@/_services';
-import { history } from './../_helpers';
+import { history } from './../../_helpers';
 
 const renderOptions = roles => {
   return roles.map((el, index) => {
@@ -20,7 +20,10 @@ class AddUser extends Component {
   }
 
   componentDidMount() {
-    if(!this.state.roles.length) userService.getRoles().then(roles => this.setState({ roles }));
+    if(!this.state.roles.length) userService.getRoles().then(roles => {
+      console.log('roles => ', roles)
+      this.setState({ roles })
+    });
   }
 
   render() {
