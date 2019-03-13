@@ -9,8 +9,8 @@ import { AdminPage } from '@/AdminPage';
 import { LoginPage } from '@/LoginPage';
 import { UsersPage } from '@/UsersPage';
 import { AddUser } from '@/AddUser';
-import { EditUser } from './../UsersPage/EditUser';
-import { DeleteUser } from './../UsersPage/DeleteUser';
+import EditUser from './../UsersPage/EditUser';
+import DeleteUser from './../UsersPage/DeleteUser';
 
 class App extends React.Component {
     constructor(props) {
