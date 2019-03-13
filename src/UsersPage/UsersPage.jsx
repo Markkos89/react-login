@@ -18,19 +18,20 @@ class UsersPage extends React.Component {
     }
 
     handleAddUser() {
-        history.push('/user/add');
+        history.push('/addUser');
     }
 
     handleEditUser() {
-        history.push('/user/edit');
+        history.push('/editUser');
     }
 
     handleDeleteUser() {
-        history.push('/user/delete');
+        history.push('/deleteUser');
     }
 
     render() {
         const { users } = this.state;
+
         return (
             <div>
                 <h1>Admin - users page</h1>
