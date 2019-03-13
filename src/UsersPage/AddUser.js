@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { userService } from '@/_services';
-import { history } from './../../_helpers';
-import UserForm from './../UserForm';
+import { history } from './../_helpers';
+import UserForm from './UserForm';
 
 class AddUser extends Component {
   constructor(props) {
