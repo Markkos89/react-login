@@ -8,7 +8,7 @@ import { HomePage } from '@/HomePage';
 import { AdminPage } from '@/AdminPage';
 import { LoginPage } from '@/LoginPage';
 import { UsersPage } from '@/UsersPage';
-import { AddUser } from '@/AddUser';
+import { AddUser } from './../UsersPage/AddUser';
 import EditUser from './../UsersPage/EditUser';
 import DeleteUser from './../UsersPage/DeleteUser';
 

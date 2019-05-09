@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { userService } from '@/_services';
+import { history } from './../_helpers';
 
 const renderOptions = roles => {
   return roles.map((el, index) => {
@@ -19,10 +20,7 @@ class AddUser extends Component {
   }
 
   componentDidMount() {
-    if(!this.state.roles.length) userService.getRoles().then(roles => {
-      console.log('roles => ', roles)
-      this.setState({ roles })
-    });
+    if(!this.state.roles.length) userService.getRoles().then(roles => this.setState({ roles }));
   }
 
   render() {
@@ -40,10 +38,25 @@ class AddUser extends Component {
             role: ''
           }}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
+            const { username, firstname, lastname, password, role } = values;
+
+            // mapeamos el objeto como deberia llegar a la api
+            let mapingValues = {
+              username,
+              firstName: firstname,
+              lastName: lastname,
+              password,
+              role
+            };
+
+            userService.postUser(mapingValues).then(res => {
+              setSubmitting(true);
+              history.push('/users');
+            }).catch(err => {
+              // en vez de alert, deberia usarse un div en que muestre el error
+              alert(err);
               setSubmitting(false);
-            }, 500);
+            })
           }}
           validationSchema={Yup.object().shape({
             username: Yup.string().required('Este campo es requerido'),
